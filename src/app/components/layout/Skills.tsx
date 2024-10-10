@@ -112,8 +112,8 @@ const TreeNode = ({ node, level = 0 }: { node: SkillsType; level: number }) => {
 
 export default function Skills() {
   return (
-    <section className="max-w-4xl m-auto h-full flex flex-col justify-center">
-      <div >
+    <section className="max-w-4xl m-auto h-full flex flex-col justify-center px-2">
+      <div>
         <TreeNode node={skills} level={0} />
       </div>
     </section>

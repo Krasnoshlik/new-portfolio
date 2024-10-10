@@ -15,7 +15,7 @@ type projectType = {
 export default function ProjectCard({ project }: { project: projectType }) {
   return (
     <motion.div
-      className="border-[2px] border-p-gray w-[340px] h-[510px] flex flex-col justify-between"
+      className="border-[2px] border-p-gray w-[340px] h-[510px] flex flex-col justify-between bg-[#141516]"
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: { project: projectType }) {
         ease: [0, 0.71, 0.2, 1.01],
       }}
     >
-      <div className="flex-shrink-0 border-b-2 border-p-gray h-[50%]">
+      <div className="flex-shrink-0 border-b-2 border-p-gray h-[50%] ">
         <Image src={project.image} alt="project image" className="object-cover w-full h-full" />
       </div>
 
