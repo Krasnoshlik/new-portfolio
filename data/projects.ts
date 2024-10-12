@@ -13,7 +13,7 @@ export const projects = [
         tech: ['React','Next.js','Tailwind','Typescript'],
         name: 'SHOP.CO',
         dis: 'Functional e-commerce website for clothes,you can add items to cart and check all items on page shop with filters and pagination',
-        link: 'https://shop-n3cmyrhe5-krasnoshliks-projects.vercel.app',
+        link: 'https://shop-co-krasnoshliks-projects.vercel.app',
     },
     {
         image: RoobyImage,
