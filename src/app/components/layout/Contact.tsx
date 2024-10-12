@@ -61,10 +61,10 @@ export default function Contact() {
   };
 
   return (
-    <section className="max-w-6xl m-auto h-full flex gap-8 justify-center items-center">
+    <section className="max-w-6xl m-auto h-full flex flex-col-reverse sm:flex-row gap-8 justify-center items-center">
 
       {/* Social Media Icons */}
-      <div className=" flex flex-col gap-4">
+      <div className=" flex sm:flex-col gap-4">
         <Link href={""}>
           <motion.div
             whileHover={{ scale: 1.1 }}
@@ -116,7 +116,7 @@ export default function Contact() {
                 </motion.span>
                 <input
                   type="text"
-                  className={`border p-2 rounded w-[300px] ${
+                  className={`border p-2 rounded w-[200px] sm:w-[300px] ${
                     nameError ? "border-red-500" : ""
                   }`}
                   onFocus={() => setIsNameFocused(true)}
@@ -140,7 +140,7 @@ export default function Contact() {
                 </motion.span>
                 <input
                   type="text"
-                  className={`border p-2 rounded w-[300px] ${
+                  className={`border p-2 rounded w-[200px] sm:w-[300px] ${
                     emailError ? "border-red-500" : ""
                   }`}
                   onFocus={() => setIsEmailFocused(true)}
@@ -191,7 +191,7 @@ export default function Contact() {
                   (!messageError ? 'Your message' : 'Enter message longer than 30 signs.')}
             </motion.span>
             <textarea
-              className={`border p-2 rounded w-[400px] h-[200px] ${
+              className={`border p-2 rounded w-[300px] sm:w-[400px] h-[200px] ${
                 messageError ? "border-red-500" : ""
               }`}
               onFocus={() => setIsMessageFocused(true)}
@@ -204,8 +204,8 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className=" absolute -bottom-[65px]">
-        <h2 className=" text-[110px]">React/Next.js/Typescript</h2>
+      <div className=" absolute -bottom-[50px] sm:-bottom-[65px]">
+        <h2 className=" text-[80px] sm:text-[110px]">React/Next.js/Typescript</h2>
       </div>
     </section>
   );

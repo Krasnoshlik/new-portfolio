@@ -27,7 +27,7 @@ export default function Header({ onNavClick, activeIndex }: HeaderProps) {
         variants={buttonVariants}
         animate={activeIndex === 0 ? 'selected' : 'notSelected'} 
       >
-        #HOME
+        HOME
       </motion.button>
 
       <motion.button
@@ -35,7 +35,7 @@ export default function Header({ onNavClick, activeIndex }: HeaderProps) {
         variants={buttonVariants}
         animate={activeIndex === 1 ? 'selected' : 'notSelected'}
       >
-        #SKILLS
+        SKILLS
       </motion.button>
 
       <motion.button
@@ -43,7 +43,7 @@ export default function Header({ onNavClick, activeIndex }: HeaderProps) {
         variants={buttonVariants}
         animate={activeIndex === 2 ? 'selected' : 'notSelected'}
       >
-        #PROJECTS
+        PROJECTS
       </motion.button>
 
       <motion.button
@@ -51,7 +51,7 @@ export default function Header({ onNavClick, activeIndex }: HeaderProps) {
         variants={buttonVariants}
         animate={activeIndex === 3 ? 'selected' : 'notSelected'}
       >
-        #CONTACT
+        CONTACT
       </motion.button>
     </header>
   );

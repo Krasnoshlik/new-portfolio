@@ -112,9 +112,31 @@ const TreeNode = ({ node, level = 0 }: { node: SkillsType; level: number }) => {
 
 export default function Skills() {
   return (
-    <section className="max-w-4xl m-auto h-full flex flex-col justify-center px-2">
-      <div>
+    <section className="max-w-4xl m-auto h-full flex flex-col justify-center px-2 pt-20">
+      <div className=' hidden sm:block'>
         <TreeNode node={skills} level={0} />
+      </div>
+      <div className=' flex gap-10 overflow-auto sm:hidden'>
+        {
+          skills.children?.map((e,i) => {
+            return (
+              <div key={i} className=" flex flex-col gap-5">
+                <h2 className=' text-[#EAC286] text-xl'>{e.name}:</h2>
+                <div className=' flex flex-col gap-2 mt-auto'>
+                  {
+                    e.children?.map((e,i) => {
+                      return (
+                        <p key={i}>
+                          {e.name}
+                        </p>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     </section>
   );
