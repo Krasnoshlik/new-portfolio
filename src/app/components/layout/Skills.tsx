@@ -116,7 +116,7 @@ export default function Skills() {
       <div className=' hidden sm:block'>
         <TreeNode node={skills} level={0} />
       </div>
-      <div className=' flex gap-10 overflow-auto sm:hidden'>
+      <div className=' flex flex-wrap justify-center gap-10 sm:hidden'>
         {
           skills.children?.map((e,i) => {
             return (

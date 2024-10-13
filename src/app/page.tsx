@@ -10,6 +10,9 @@ import Skills from './components/layout/Skills';
 import Projects from './components/layout/Projects';
 import Contact from './components/layout/Contact';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Home() {
   const swiperRef = useRef<SwiperClass | null>(null);
   const [activeIndex, setActiveIndex] = useState(0); 
@@ -22,6 +25,7 @@ export default function Home() {
 
   return (
     <div className="w-full h-svh">
+       <ToastContainer />
       <Header onNavClick={handleSlideChange} activeIndex={activeIndex} />
       <Swiper
         direction={'vertical'}

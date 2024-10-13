@@ -8,6 +8,7 @@ import LinkedInIcon from '../../assets/linkedin-50.svg';
 import GmailIcon from '../../assets/gmail-50.svg';
 import Link from "next/link";
 
+import { toast } from 'react-toastify';
 
 export default function Contact() {
   const [isNameFocused, setIsNameFocused] = useState(false);
@@ -21,6 +22,8 @@ export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [submitted, setSubmitted] = useState(false); 
 
   const labelVariants = {
     focused: { y: -33, x: -20, scale: 0.8, color: "#B17457", opacity: 1 },
@@ -55,17 +58,39 @@ export default function Contact() {
     return isValid;
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    validateInputs();
+  
+    if (validateInputs()) {
+      const response = await fetch("https://formspree.io/f/mkgnnjny", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _subject: "New Contact Form Submission",
+        }),
+      });
+  
+      if (response.ok) {
+        toast.success("Email is sent");
+        setSubmitted(true);
+      } else {
+        toast.error("Failed to submit form");
+        console.error("Failed to submit form");
+      }
+    }
   };
+  
 
   return (
     <section className="max-w-6xl m-auto h-full flex flex-col-reverse sm:flex-row gap-8 justify-center items-center">
-
       {/* Social Media Icons */}
       <div className=" flex sm:flex-col gap-4">
-        <Link href={""}>
+        <Link href={"https://github.com/Krasnoshlik"}>
           <motion.div
             whileHover={{ scale: 1.1 }}
             className="hover:filter hover:invert-[60%] hover:sepia-[30%] hover:saturate-[400%] hover:hue-rotate-[330deg] hover:brightness-[100%] hover:contrast-[150%]"
@@ -75,7 +100,7 @@ export default function Contact() {
           </motion.div>
         </Link>
 
-        <Link href={""}>
+        <Link href={"https://www.linkedin.com/in/dimitar-krasnoshlyk-0b5a84241/"}>
           <motion.div
             whileHover={{ scale: 1.1 }}
             className="hover:filter hover:invert-[60%] hover:sepia-[30%] hover:saturate-[400%] hover:hue-rotate-[330deg] hover:brightness-[100%] hover:contrast-[150%]"
@@ -85,7 +110,7 @@ export default function Contact() {
           </motion.div>
         </Link>
 
-        <Link href={""}>
+        <Link href="mailto:dimakrasnoshluk@gmail.com?subject=Your Subject Here&body=Your Pre-written Email Body Here">
           <motion.div
             whileHover={{ scale: 1.1 }}
             className="hover:filter hover:invert-[60%] hover:sepia-[30%] hover:saturate-[400%] hover:hue-rotate-[330deg] hover:brightness-[100%] hover:contrast-[150%]"
@@ -97,7 +122,7 @@ export default function Contact() {
       </div>
 
       {/* Contact Form */}
-      <div className="flex flex-col gap-2">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="flex flex-col items-start gap-5 self-center text-black">
           <h2 className="text-3xl font-bold text-white">Contact me</h2>
 
@@ -158,8 +183,8 @@ export default function Contact() {
                   <div className=" -bottom-[30px] -left-[15px] absolute w-[10px] h-[10px] bg-red-500 rounded-3xl shadow-white"></div>
                 </div>
               )}
-              <button className="relative h-full text-gray-500 bg-white hover:text-white overflow-hidden border p-2 rounded-md border-[#B17457] font-medium transition-colors duration-300 group"
-              onClick={handleSubmit}
+              <button type="submit" className="relative h-full text-gray-500 bg-white hover:text-white overflow-hidden border p-2 rounded-md border-[#B17457] font-medium transition-colors duration-300 group"
+              
               >
                 <span className="relative z-20">Submit</span>
                 <span className="absolute inset-0 bg-[#B17457] w-0 h-full transition-all duration-500 group-hover:w-full ease-in-out z-10"></span>
@@ -185,7 +210,7 @@ export default function Contact() {
               initial="unfocused"
               animate={isMessageFocused ? "focused" : "unfocused"}
               variants={labelVariants}
-              className="absolute left-2 top-2 pointer-events-none text-gray-500"
+              className="absolute w-max left-2 top-2 pointer-events-none text-gray-500"
             >
               {message.length > 0 ? 'Message longer is enough to submit.' :
                   (!messageError ? 'Your message' : 'Enter message longer than 30 signs.')}
@@ -202,7 +227,7 @@ export default function Contact() {
             />
           </label>
         </div>
-      </div>
+      </form>
 
       <div className=" absolute -bottom-[50px] sm:-bottom-[65px]">
         <h2 className=" text-[80px] sm:text-[110px]">React/Next.js/Typescript</h2>
