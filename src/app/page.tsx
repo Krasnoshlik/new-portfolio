@@ -42,7 +42,7 @@ export default function Home() {
         }}
       >
         <SwiperSlide>
-          <Main />
+          <Main setActiveIndex={setActiveIndex} onContactMeClick={handleSlideChange}/>
         </SwiperSlide>
 
         <SwiperSlide>

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
-export default function Main() {
+export default function Main({setActiveIndex,onContactMeClick}:{setActiveIndex: Dispatch<SetStateAction<number>>, onContactMeClick: (index: number) => void}) {
   return (
     <section className=" w-full h-full flex flex-col sm:flex-row gap-4 px-2 justify-center items-center image-for-bg-first">
       <div className=" p-4 flex flex-col items-start gap-4 rounded-lg z-20">
@@ -16,7 +16,9 @@ export default function Main() {
           Based in <span className=" text-[#B17457]">Plovdiv, Bulgaria</span>
         </p>
 
-        <button className="relative overflow-hidden border p-2 rounded-md border-[#B17457] font-medium transition-colors duration-300 group">
+        <button className="relative overflow-hidden border p-2 rounded-md border-[#B17457] font-medium transition-colors duration-300 group"
+        onClick={() => {setActiveIndex(3); onContactMeClick(3)}}
+        >
           <span className="relative z-20">Contact me</span>
           <span className="absolute inset-0 bg-[#B17457] w-0 h-full transition-all duration-500 group-hover:w-full ease-in-out z-10"></span>
         </button>
